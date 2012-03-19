@@ -30,7 +30,7 @@ class Parser():
 			turtle.x += int(dx)
 			turtle.y += int(dy)
 			turtle.proclist.append(brush.Procedure(None,
-								 [int(turtle.x), int(turtle.y)]))
+								 [turtle.x, turtle.y]))
 
 		#Angles clockwise
 		elif self.tokens[pos][0] == "RIGHT" or self.tokens[pos][0] == "RT":
