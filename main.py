@@ -22,7 +22,7 @@ def main():
 	Parser.Interpret(turtle)
 
 	while True:
-		linelist = [[160,160]]
+		linelist = [[turtle.x, turtle.y]]
 		for i in range(0, len(turtle.proclist)):
 			if turtle.proclist[i].endpoint != None:
 				linelist.append(turtle.proclist[i].endpoint)

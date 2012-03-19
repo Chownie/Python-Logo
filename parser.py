@@ -25,10 +25,10 @@ class Parser():
 			length = self.tokens[pos+1][0]
 			pi = math.pi
 			radians = float(pi) * float(turtle.angle) / 180
-			x = math.cos(float(radians))*float(length)
-			y = math.sin(float(radians))*float(length)
-			x = x+turtle.x
-			y = y+turtle.y
+			dx = math.cos(float(radians))*float(length)
+			dy = math.sin(float(radians))*float(length)
+			x = dx+turtle.x
+			y = dy+turtle.y
 			print "TOKEN: %s %s" % (self.tokens[pos][0], self.tokens[pos+1][0])
 			print "x: %s\ny: %s\nAngle: %s\nRad: %s" % (x, y, turtle.angle, radians)
 			turtle.proclist.append(brush.Procedure(None, [int(x), int(y)]))
