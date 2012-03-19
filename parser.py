@@ -20,25 +20,24 @@ class Parser():
 		pass
 	
 	def RESERVED(self, pos, turtle):
-		#-----------MOVES FORWARD IN FACING DIRECTION----------------------
+		#Moving forward
 		if self.tokens[pos][0] == "FORWARD" or self.tokens[pos][0] == "FD":
 			length = self.tokens[pos+1][0]
 			radians = float(math.pi) * float(turtle.angle) / 180
 			dx = math.cos(float(radians))*float(length)
 			dy = math.sin(float(radians))*float(length)
 
+			turtle.x += int(dx)
+			turtle.y += int(dy)
 			turtle.proclist.append(brush.Procedure(None,
-								 [int(dx+turtle.x), int(dy+turtle.y)]))
-			turtle.x = int(dx+turtle.x)
-			turtle.y = int(dy+turtle.y)
+								 [int(turtle.x), int(turtle.y)]))
 
-
-		#-----------CHANGES FACING DIRECTION CLOCKWISE---------------------
+		#Angles clockwise
 		elif self.tokens[pos][0] == "RIGHT" or self.tokens[pos][0] == "RT":
 			angle = self.tokens[pos+1][0]
 			turtle.angle = turtle.angle+float(angle)
 
-		#-----------CHANGES FACING DIRECTION ANTI-CLOCKWISE---------------
+		#Angles counterclockwise
 		elif self.tokens[pos][0] == "LEFT" or self.tokens[pos][0] == "LT":
 			angle = self.tokens[pos+1][0]
 			turtle.angle = turtle.angle-float(angle)
