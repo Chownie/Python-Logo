@@ -25,13 +25,15 @@ class Parser():
 			length = self.tokens[pos+1][0]
 			pi = math.pi
 			radians = float(pi) * float(turtle.angle) / 180
-			DX = math.cos(float(radians))*float(length)+160
-			DY = math.sin(float(radians))*float(length)+160
+			x = math.cos(float(radians))*float(length)
+			y = math.sin(float(radians))*float(length)
+			x = x+turtle.x
+			y = y+turtle.y
 			print "TOKEN: %s %s" % (self.tokens[pos][0], self.tokens[pos+1][0])
-			print "DX: %s\nDY: %s\nAngle: %s\nRad: %s" % (DX, DY, turtle.angle, radians)
-			turtle.proclist.append(brush.Procedure(None, [int(DX), int(DY)]))
-			turtle.x = int(DX)
-			turtle.y = int(DY)
+			print "x: %s\ny: %s\nAngle: %s\nRad: %s" % (x, y, turtle.angle, radians)
+			turtle.proclist.append(brush.Procedure(None, [int(x), int(y)]))
+			turtle.x = int(x)
+			turtle.y = int(y)
 
 
 		#-----------CHANGES FACING DIRECTION CLOCKWISE---------------------
