@@ -23,17 +23,14 @@ class Parser():
 		#-----------MOVES FORWARD IN FACING DIRECTION----------------------
 		if self.tokens[pos][0] == "FORWARD" or self.tokens[pos][0] == "FD":
 			length = self.tokens[pos+1][0]
-			pi = math.pi
-			radians = float(pi) * float(turtle.angle) / 180
+			radians = float(math.pi) * float(turtle.angle) / 180
 			dx = math.cos(float(radians))*float(length)
 			dy = math.sin(float(radians))*float(length)
-			x = dx+turtle.x
-			y = dy+turtle.y
-			print "TOKEN: %s %s" % (self.tokens[pos][0], self.tokens[pos+1][0])
-			print "x: %s\ny: %s\nAngle: %s\nRad: %s" % (x, y, turtle.angle, radians)
-			turtle.proclist.append(brush.Procedure(None, [int(x), int(y)]))
-			turtle.x = int(x)
-			turtle.y = int(y)
+
+			turtle.proclist.append(brush.Procedure(None,
+								 [int(dx+turtle.x), int(dy+turtle.y)]))
+			turtle.x = int(dx+turtle.x)
+			turtle.y = int(dy+turtle.y)
 
 
 		#-----------CHANGES FACING DIRECTION CLOCKWISE---------------------
@@ -45,7 +42,7 @@ class Parser():
 		elif self.tokens[pos][0] == "LEFT" or self.tokens[pos][0] == "LT":
 			angle = self.tokens[pos+1][0]
 			turtle.angle = turtle.angle-float(angle)
-			print "ANGLE: %s" % turtle.angle
+
 	def BOOLEAN(self, pos, turtle):
 		if self.tokens[pos][0] == "PENUP":
 			turtle.proclist.append(brush.Procedure(0, None))

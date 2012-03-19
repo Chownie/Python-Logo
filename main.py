@@ -31,7 +31,6 @@ def main():
 			if i == 0:
 				pass
 			else:
-				print "DRAWING FROM %s to %s" % (linelist[i-1], linelist[i])
 				pygame.draw.line(screen, (0,0,0), linelist[i-1], linelist[i], turtle.ink)
 
 		screen.blit(turtle.image, (turtle.x, turtle.y))
