@@ -16,18 +16,15 @@ screen.convert_alpha()
 clock = pygame.time.Clock()
 
 def main():
-	temp = pygame.display.get_surface()
-	temp.convert_alpha()
-	temp.fill((255,255,255))
-	turtle = brush.Turtle(temp, pygame.image.load("turtle.png"), 160, 160)
+	turtle = brush.Turtle(screen, pygame.image.load("turtle.png"), 160, 160)
 
 	Parser = parser.Parser("logo.imp")
 	Parser.Interpret(turtle)
 
-	while True:
-		screen.blit(turtle.image, (turtle.x, turtle.y))
+	screen.blit(turtle.image, (turtle.x, turtle.y))
 
+	while True:
 		pygame.display.flip()
-		screen.blit(temp, (turtle.x, turtle.y))
+		turtle.paint()
 		clock.tick(10)
 main()
