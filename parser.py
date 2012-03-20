@@ -24,29 +24,21 @@ class Parser():
 		#Moving forward
 		if self.tokens[pos][0] == "FORWARD" or self.tokens[pos][0] == "FD":
 			length = self.tokens[pos+1][0]
-			radians = float(math.pi) * float(turtle.angle) / 180
-			dx = math.cos(float(radians))*float(length)
-			dy = math.sin(float(radians))*float(length)
-
-			turtle.x += int(dx)
-			turtle.y += int(dy)
-			turtle.proclist.append(brush.Procedure(None, [turtle.x, turtle.y]))
+			turtle.forward(length)
 
 		#Angles clockwise
 		elif self.tokens[pos][0] == "RIGHT" or self.tokens[pos][0] == "RT":
-			angle = self.tokens[pos+1][0]
-			turtle.angle = turtle.angle+float(angle)
+			turtle.turnright(self.tokens[pos+1][0])
 
 		#Angles counterclockwise
 		elif self.tokens[pos][0] == "LEFT" or self.tokens[pos][0] == "LT":
-			angle = self.tokens[pos+1][0]
-			turtle.angle = turtle.angle-float(angle)
+			turtle.turnleft(self.tokens[pos+1][0])
 
 	def BOOLEAN(self, pos, turtle):
 		if self.tokens[pos][0] == "PENUP":
-			turtle.proclist.append(brush.Procedure(0, None))
+			turtle.penup()
 		elif self.tokens[pos][0] == "PENDOWN":
-			turtle.proclist.append(brush.Procedure(1, None))
+			turtle.pendown()
 
 	def COMMENT(self, pos, turtle):
 		print self.tokens[pos][0]

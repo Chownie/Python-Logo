@@ -22,20 +22,6 @@ def main():
 	Parser.Interpret(turtle)
 
 	while True:
-		for i in range(0, len(turtle.proclist)):
-			if turtle.proclist[i].endpoint != None:
-				for l in range(i, 0, -1):
-					if turtle.proclist[l].endpoint != None:
-						if l == 0:
-							pass
-						else:
-							pygame.draw.line(screen, (0,0,0), turtle.proclist[l].endpoint,
-							turtle.proclist[i].endpoint, turtle.ink)
-							break
-
-			elif turtle.proclist[i].ink != None:
-				turtle.ink = turtle.proclist[i].ink
-
 		screen.blit(turtle.image, (turtle.x, turtle.y))
 
 		pygame.display.flip()
