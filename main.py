@@ -21,10 +21,7 @@ def main():
 	Parser = parser.Parser("logo.imp")
 	Parser.Interpret(turtle)
 
-	screen.blit(turtle.image, (turtle.x, turtle.y))
-
 	while True:
-		pygame.display.flip()
 		turtle.paint()
 		clock.tick(10)
 main()

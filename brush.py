@@ -44,6 +44,8 @@ class Turtle():
 
 	def paint(self):
 		self.display.blit(self.temp, (0,0))
+		self.display.blit(self.image, (self.x-8, self.y-8))
+		pygame.display.flip()
 
 class Procedure():
 	def __init__(self, ink=None, endpoint=None):
