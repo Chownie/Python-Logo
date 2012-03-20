@@ -11,8 +11,7 @@ class Turtle():
 		self.x = x
 		self.y = y
 		self.display = display
-		self.temp = pygame.display.get_surface()
-		self.temp.convert_alpha()
+		self.temp = pygame.display.get_surface().convert_alpha()
 		self.temp.fill((255,255,255))
 	
 	def forward(self, amount):
@@ -44,7 +43,7 @@ class Turtle():
 
 	def paint(self):
 		self.display.blit(self.temp, (0,0))
-		self.display.blit(self.image, (self.x-8, self.y-8))
+		self.display.blit(self.image, (self.x-6, self.y-6))
 		pygame.display.flip()
 
 class Procedure():
