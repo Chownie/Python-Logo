@@ -16,22 +16,25 @@ screen.convert_alpha()
 clock = pygame.time.Clock()
 
 def main():
-	turtle = brush.Turtle(pygame.image.load("turtle.png"), 200, 200)
+	turtle = brush.Turtle(pygame.image.load("turtle.png"), 160, 160)
 
 	Parser = parser.Parser("logo.imp")
 	Parser.Interpret(turtle)
 
 	while True:
-		linelist = [[turtle.x, turtle.y]]
 		for i in range(0, len(turtle.proclist)):
 			if turtle.proclist[i].endpoint != None:
-				linelist.append(turtle.proclist[i].endpoint)
+				for l in range(i, 0, -1):
+					if turtle.proclist[l].endpoint != None:
+						if l == 0:
+							pass
+						else:
+							pygame.draw.line(screen, (0,0,0), turtle.proclist[l].endpoint,
+							turtle.proclist[i].endpoint, turtle.ink)
+							break
 
-		for i in range(0, len(linelist)): 
-			if i == 0:
-				pass
-			else:
-				pygame.draw.line(screen, (0,0,0), linelist[i-1], linelist[i], turtle.ink)
+			elif turtle.proclist[i].ink != None:
+				turtle.ink = turtle.proclist[i].ink
 
 		screen.blit(turtle.image, (turtle.x, turtle.y))
 

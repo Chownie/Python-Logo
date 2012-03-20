@@ -24,5 +24,4 @@ token_exprs = [
 ]
 
 def imp_lex(characters):
-	print lexer.lex(characters, token_exprs)
 	return lexer.lex(characters, token_exprs)

@@ -10,6 +10,7 @@ class Parser():
 		self.tokens = imp_lex(characters)
 
 	def Interpret(self, turtle):
+		turtle.proclist.append(brush.Procedure(None, [turtle.x, turtle.y]))
 		for i in range(0, len(self.tokens)):
 			getattr(self, self.tokens[i][1])(i, turtle)
 
@@ -29,8 +30,7 @@ class Parser():
 
 			turtle.x += int(dx)
 			turtle.y += int(dy)
-			turtle.proclist.append(brush.Procedure(None,
-								 [turtle.x, turtle.y]))
+			turtle.proclist.append(brush.Procedure(None, [turtle.x, turtle.y]))
 
 		#Angles clockwise
 		elif self.tokens[pos][0] == "RIGHT" or self.tokens[pos][0] == "RT":
